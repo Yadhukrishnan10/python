@@ -1,0 +1,75 @@
+{% include 'user/user_header.html' %}
+{#<h3 style="text-align: center">Messages</h3><br>#}
+<br>
+<style>
+    table, th, td {
+        {#border: 1px solid black;#}
+        border-collapse: collapse;
+        padding: 20px;
+        text-align: center;
+        table-layout: fixed;
+        position: relative;
+        width: 100%;
+    }
+</style>
+{#<div class="container col-md-6">#}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {#                <div class="card">#}
+            {#                    <div class="card-body text-center">#}
+<h3>Messages</h3>
+        <br>
+        <br>
+
+            <table>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Sender</th>
+                    <th>Message</th>
+                    <th>Type Message</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in model %}
+                    {#        {% if item.log.status == 'approved' %}#}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.doctorid.name }}</td>
+                        <td>{{ i.message }}</td>
+                        <td>
+                        <form action="/message" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="doctorid" value="{{ i.doctorid.id }}">
+                                <input type="hidden" name="userid" value="{{ request.session.user_id }}">
+                                <input type="text" name="message" placeholder="Enter message">
+                                <input type="hidden" name="type" value="P">
+                                <input type="hidden" name="model" value="app.models.Message">
+                        <td><input type="submit" value="Send" class="btn btn-primary"></td>
+
+                        </form>
+                        </td>
+                    </tr>
+                    {#        {% endif %}#}
+                {% endfor %}
+            </table>
+
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}

@@ -1,0 +1,93 @@
+{% include 'doctor/doctor_header.html' %}
+<h3 style="text-align: center">Update Details</h3>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 20px;
+        text-align: center;
+        table-layout: fixed;
+        position:relative;
+        width: 100%;
+}
+</style>
+{#<div class="container col-md-6">#}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+{#                <div class="card">#}
+{#                    <div class="card-body text-center">#}
+
+
+                        <table>
+                            <tr>
+                                <th>Details</th>
+{#                                <th>Phone</th>#}
+                                    <th>Action</th>
+                            </tr>
+                            {% for i in model %}
+                                {#        {% if item.log.status == 'approved' %}#}
+                                <tr>
+{#                                    <td>{{ forloop.counter }}</td>#}
+                                    <td>{{ i.details }}</td>
+{#                                    <td>{{ i.section }}</td>#}
+{#                                    <td>{{ i.phone }}</td>#}
+                                    <td><a href="/edit/Consult/{{ i.id }}/doctor@form" class="btn btn-primary">Edit</a>
+                                    </td>
+
+                                </tr>
+                                {#        {% endif %}#}
+                            {% endfor %}
+                        </table>
+
+
+                        {#                        <form action="/cart" method="post">#}
+                        {#                            {% csrf_token %}#}
+                        {#                            <input type="hidden" value="{{ i.price }}" name="price">#}
+                        {#                            <input type="hidden" value="{{ i.id }}" name="productid">#}
+                        {#                            <input type="hidden" value="{{ request.session.user_id }}" name="userid">#}
+                        {##}
+                        {#                            <div>{{ i.name }}</div>#}
+                        {#                            <img src="/static/profile/{{ i.profile }}" height="100">#}
+                        {#                            <div>Rs. {{ i.price }}</div>#}
+                        {#                            <div><p style="color: #000;">{{ i.quantity }} available</p></div>#}
+                        {#                            <div class="w-100"></div>#}
+                        {#                            <table>#}
+                        {#                                <tr>#}
+                        {#                                    <td>#}
+                        {#                                <span class="input-group-btn mr-2">#}
+                        {#                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">#}
+                        {#                           <i class="iconify" data-icon="akar-icons:minus" data-inline="false"></i>#}
+                        {#                            </button>#}
+                        {#                            </span>#}
+                        {#                                    </td>#}
+                        {#                                    <td>#}
+                        {#                                        <input type="text" name="quantity" id="quantity"#}
+                        {#                                               class="quantity text-center form-control input-number"#}
+                        {#                                               value="1" min="1" max="100"></td>#}
+                        {#                                    <td>#}
+                        {#                            <span class="input-group-btn ml-2">#}
+                        {##}
+                        {#                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">#}
+                        {#                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">#}
+                        {#                             <i class="iconify" data-icon="akar-icons:plus" data-inline="false"></span></i>  </button></span>#}
+                        {#                             <i class="ion-ios-add"></i>  </button></span>#}
+                        {#                                    </td>#}
+                        {#                                </tr>#}
+                        {#                            </table>#}
+                        {#                            <br>#}
+                        {#                            <p><input type="submit" value="Add to Cart" class="btn btn-primary"></p>#}
+                        {#                        </form>#}
+
+{#                    </div>#}
+                    {##}
+                    {#                </div>#}
+
+
+            </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

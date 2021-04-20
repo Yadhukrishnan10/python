@@ -1,0 +1,73 @@
+{% include 'doctor/doctor_header.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <table class="table table-light">
+                    <h3 class="b-w3ltxt text-capitalize mt-md-4">View Appoinments</h3>
+
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Patient Name</th>
+                        <th>Enter Prescription</th>
+                        <th>Type Message</th>
+
+                    </tr>
+
+                    {% for i in model %}
+
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.userid.name }}</td>
+
+
+                              <td>
+                                  <form action="/prescription" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="userid" value="{{ i.userid.id }}">
+                                    <input type="hidden" name="doctorid" value="{{ request.session.user_id }}">
+                                    <input type="text" name="prescription" placeholder="Enter Prescription">
+{#                                    <input type="hidden" name="type" value="D">#}
+                                    <input type="hidden" name="model" value="app.models.Prescription">
+                                    <td><input type="submit" value="Upload" class="btn btn-primary"></td>
+
+                                </form>
+
+{#                                <td>#}
+{#                                    <a href="" class="btn btn-primary">Upload</a>#}
+{#                                </td>#}
+
+
+{#                                <td><input type="submit" value="Upload" class="btn btn-primary"></td>#}
+                            <td>
+                                  <form action="/message" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="userid" value="{{ i.userid.id }}">
+                                    <input type="hidden" name="doctorid" value="{{ request.session.user_id }}">
+                                    <input type="text" name="message" placeholder="Enter message">
+                                    <input type="hidden" name="type" value="D">
+                                    <input type="hidden" name="model" value="app.models.Message">
+                                    <td><input type="submit" value="Send" class="btn btn-primary"></td>
+
+                                </form>
+                            </td>
+
+
+
+
+                        </tr>
+
+
+
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+            {#            </form>#}
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

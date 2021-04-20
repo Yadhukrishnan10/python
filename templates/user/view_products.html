@@ -1,0 +1,52 @@
+{% load static %}
+{% include 'user/user_header.html' %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        {% for obj in objs %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/static/profile/{{ obj.profile }}" width="250" height="250">
+                <h1>{{ onj.name }}</h1>
+                <p class="price">{{ obj.price }}</p>
+                <p class="quantity">{{ obj.quantity }}</p>
+                <p><button>Buy</button></p>
+            </div>
+        </div>
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

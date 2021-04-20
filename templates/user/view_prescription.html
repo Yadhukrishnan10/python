@@ -1,0 +1,77 @@
+{% include 'user/user_header.html' %}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 20px;
+        text-align: center;
+        table-layout: fixed;
+        position:relative;
+        width: 100%;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <table class="table table-light">
+                    {#                                                    <h2 class="text-center">Students Details</h2>#}
+                   <br>
+                    <h3 class="b-w3ltxt text-capitalize mt-md-4">Prescription</h3>
+
+                    <tr>
+                        <br>
+                        <th>Sl.No</th>
+                        <th>Doctor Name</th>
+                        <th>Prescription</th>
+
+                    </tr>
+
+                    {% for i in model %}
+
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.doctorid.name }}</td>
+                            <td>{{ i.prescription }}</td>
+
+                            {#                            <td>#}
+                            {#                                <a href="/view/">Upload Prescription</a>#}
+                            {#                            </td>#}
+
+
+{#                            <form action="/prescription" method="post">#}
+{#                                {% csrf_token %}#}
+{#                                <input type="hidden" name="userid" value="{{ i.userid.id }}">#}
+{#                                <input type="hidden" name="doctorid" value="{{ request.session.user_id }}">#}
+{#                                <td>#}
+{#                                    <input type="file" name="file" class="custom-file-input" id="file">#}
+{#                                    {{ form|safe }}#}
+{#                                </td>#}
+{##}
+{##}
+{#                                <td><input type="submit" value="Upload" class="btn btn-primary"></td>#}
+{##}
+{#                            </form>#}
+{##}
+{#                       <td>#}
+{#                           <a href="/chat" class="btn btn-primary">Chat</a>#}
+{#                       </td>#}
+
+
+
+                        </tr>
+
+
+
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+            {#            </form>#}
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

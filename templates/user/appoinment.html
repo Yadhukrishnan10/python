@@ -1,0 +1,53 @@
+{% include 'user/user_header.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="row">
+                    <table class="table table-light">
+                        {#                                                    <h2 class="text-center">Students Details</h2>#}
+                        <h3 class="b-w3ltxt text-capitalize mt-md-4">Make Appoinment</h3>
+
+                        <tr>
+                            <th>Sl.No</th>
+                            <th>Doctor Name</th>
+                            <th>Section</th>
+                            <th>Consultation Details</th>
+
+                        </tr>
+
+                        {% for i in model %}
+
+                            <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.doctorid.name }}</td>
+                            <td>{{ i.doctorid.section }}</td>
+                            <td>{{ i.details }}</td>
+
+
+                            <td>
+
+                                <form action="/appoinment" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="consultid" value="{{ i.id }}">
+                                    <input type="hidden" name="doctorid" value="{{ i.doctorid.id }}">
+                                    <input type="hidden" name="userid" value="{{ request.session.user_id }}">
+                                    <td><input type="submit" value="Take Appoinment" class="btn btn-primary"></td>
+
+                                </form>
+                            </td>
+                            </tr>
+
+
+
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+
+{#            </form>#}
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

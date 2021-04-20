@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'doctor/doctor_header.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/save" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form|safe }}
+
+                <form action="/prescription" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidde1" name="userid" value="{{ i.userid.id }}">
+                                <input type="hidde1" name="doctorid" value="{{ request.session.user_id }}">
+
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
+            </form>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

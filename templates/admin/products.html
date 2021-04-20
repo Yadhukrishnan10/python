@@ -1,0 +1,50 @@
+{% load static %}
+{% include 'admin/admin_header.html' %}
+<head>
+    <style>
+#products {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#products td, #products th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#products tr:nth-child(even){background-color: #f2f2f2;}
+
+#products tr:hover {background-color: #ddd;}
+
+#products th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h3>To check and delete Products</h3>
+<table id="products">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Operations</th>
+    </tr>
+    {% for obj in objs %}
+    <tr>
+        <td>{{ obj.name }}</td>
+        <td>{{ obj.price }}</td>
+        <td>{{ obj.quantity }}</td>
+        <td><a href="/edit/Product/{{ obj.id }}/product@form">Edit</a> <a href="/delete/Product/{{ obj.id }}">Delete</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+</body>
+
+{% include 'footer.html' %}
